@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ActivityOne extends AppCompatActivity {
 
     private EditText et1;
-    private String mensaje;
+    String mensaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +23,16 @@ public class ActivityOne extends AppCompatActivity {
         setContentView(R.layout.activityone);
     }
 
-    public void cambiar(View vista){
+    public void convertir(View vista) {
 
         et1 = findViewById(R.id.et1);
         mensaje = et1.getText().toString();
 
-        Intent intent = new Intent(this,ActivityTwo.class);
-        intent.putExtra("Numero_convertir", mensaje);
 
-        startActivity(intent);
+
+        Intent my_intent = new Intent(this,ActivityTwo.class);
+        my_intent.putExtra("Numero_convertido",mensaje);
+        startActivity(my_intent);
     }
 }
+
